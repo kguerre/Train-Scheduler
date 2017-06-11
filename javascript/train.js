@@ -11,16 +11,24 @@
 
   var trainData = firebase.database();
 
+//Iniital Values
+  var name = "";
+  var destination = "";
+  var frequency = 0;
+  var trainTime = "";
+  var firstTrainTime = "";
+
 $("#submit-train").on('click', function(event) {
 	event.preventDefault();
 
 	//collect data from the html form, create variables to hold the data
 	//when retrieving the "first train" data, make sure to parse it into a unix timestamp
-	var name = $("#train-input").val().trim();
-	var destination = $("#destination-input").val().trim();
-	var frequency = parseInt($("#frequency-input").val().trim());
-	var trainTime = parseInt($("#time-input").val().trim());
-	var firstTrainTime = moment(trainTime).format('X');
+	name = $("#train-input").val().trim();
+	destination = $("#destination-input").val().trim();
+	frequency = ($("#frequency-input").val().trim());
+	trainTime = ($("#time-input").val().trim());
+	console.log(trainTime);
+	firstTrainTime = moment(trainTime,"HH:mm").format('X');
 	console.log(firstTrainTime);
 	
 	//'push' that data into firebase (assume that the 'child_added' listener updates html)
@@ -57,9 +65,13 @@ trainData.ref().on('child_added', function(childSnapshot) {
 	//THEN do the math
 
 		//compute the difference in time from 'now' and the first train, store in var
-		var trainFrequency = childSnapshot.val().frequency
-		var trainTime = parseInt($("#time-input").val().trim());
-		var firstTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
+		var trainFrequency = childSnapshot.val().frequency;
+		console.log(trainFrequency);
+		var trainTime = ($("#time-input").val().trim());
+		console.log(trainTime);
+		//var firstTrainTime = moment(trainTime,"HH:mm").format('X');
+		//console.log(firstTrainTime);
+		var firstTimeConverted = moment(trainTime, "hh:mm").subtract(1, "years");
 		console.log(firstTimeConverted);
 
 		var currentTime = moment();
