@@ -42,10 +42,7 @@ $("#submit-train").on('click', function(event) {
 	console.log("Your train was added");
 	//clear out our html form for the next input
 	$(".user-input").val(' ');
-	// $("#train-input").empty();
-	// $("#destination-input").empty();
-	// $("#frequency-input").empty();
-	// $("#time-input").empty();
+	
 });
 
 
