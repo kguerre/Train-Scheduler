@@ -51,14 +51,16 @@ $("#submit-train").on('click', function(event) {
 
 
 trainData.ref().on('child_added', function(childSnapshot) {
-	console.log('the childSnapshot data', childSnapshot.val());
+	
 
 	//create local variables to store the data from firebase
-	// $("#info-body").append("<tr><td class='table-text'>" + childSnapshot.val().name + "</td>" +
-	// 	"<td class='table-text'>" + childSnapshot.val().destination + "</td>" +
-	// 	"<td class='table-text'>" + childSnapshot.val().frequency + "</td>" +
-	// 	"<td class='table-text'>" + "" + "</td>" +
-	// 	"<td class='table-text'>" + "" + "</td>/tr>");
+	var dataTrain = childSnapshot.val();
+	console.log('the childSnapshot data', childSnapshot.val());
+	console.log(childSnapshot.val().name);
+	console.log(childSnapshot.val().destination);
+	console.log(childSnapshot.val().frequency);
+	console.log(childSnapshot.val().time);
+	//create local variables to store the data from firebase
 
 	//FIRST make the table row show up with empty strings for 'timeInMinutes'/'tArrival'
 
@@ -69,8 +71,8 @@ trainData.ref().on('child_added', function(childSnapshot) {
 		console.log(trainFrequency);
 		var trainTime = ($("#time-input").val().trim());
 		console.log(trainTime);
-		//var firstTrainTime = moment(trainTime,"HH:mm").format('X');
-		//console.log(firstTrainTime);
+		// var firstTrainTime = moment(trainTime,"HH:mm").format('X');
+		// console.log(firstTrainTime);
 		var firstTimeConverted = moment(trainTime, "hh:mm").subtract(1, "years");
 		console.log(firstTimeConverted);
 
