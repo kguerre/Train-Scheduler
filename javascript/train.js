@@ -96,5 +96,5 @@ trainData.ref().on('child_added', function(childSnapshot) {
 		"<td class='table-text'>" + childSnapshot.val().destination + "</td>" +
 		"<td class='table-text'>" + childSnapshot.val().frequency + "</td>" +
 		"<td class='table-text'>" + arrival.format("h:mm:ss a") + "</td>" +
-		"<td class='table-text'>" + timeInMinutes + "</td>/tr>");
+		"<td class='table-text'>" + timeInMinutes + "</td></tr>");
 });
