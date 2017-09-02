@@ -1,5 +1,4 @@
 # Train-Scheduler
-Homework 7
 
 ### Overview
 
